@@ -58,4 +58,24 @@ public class TelaPaciente : TelaBase<Paciente>, ITelaOpcoes, ITelaCrud
 
         return new Paciente(nome, telefone, cartaoSUS, cpf);
     }
+
+    protected override bool ExisteRegistroComInformacoesExclusivas(Paciente entidade, int? idIgnorado = null)
+    {
+        List<Paciente> registros = repositorio.SelecionarTodos();
+
+        foreach (Paciente p in registros)
+        {
+            if (p.Id != idIgnorado && p.CartaoSus == entidade.CartaoSus)
+            {
+                Console.WriteLine("---------------------------------");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Já existe um paciente cadastrado com o CARTÃO SUS informado.");
+                Console.ResetColor();
+                Console.WriteLine("---------------------------------");
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

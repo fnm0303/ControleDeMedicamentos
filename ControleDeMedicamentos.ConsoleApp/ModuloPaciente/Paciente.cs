@@ -45,4 +45,6 @@ public class Paciente : EntidadeBase
         CartaoSus = pacienteAtualizado.CartaoSus;
         CPF = pacienteAtualizado.CPF;
     }
+
+
 }
