@@ -46,7 +46,7 @@ public class TelaFornecedor : TelaBase<Fornecedor>, ITelaOpcoes, ITelaCrud
         Console.Write("Digite o nome do fornecedor: ");
         string nome = Console.ReadLine() ?? string.Empty;
 
-        Console.Write("Digite o telefone do fornecedor: ");
+        Console.Write("Digite o telefone do fornecedor \"(xx) xxxxx-xxxx:\": ");
         string telefone = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Digite o CNPJ do fornecedor: ");
