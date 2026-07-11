@@ -1,5 +1,6 @@
 using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
@@ -11,6 +12,7 @@ public class TelaPrincipal
     private readonly TelaFornecedor telaFornecedor;
     private readonly TelaMedicamento telaMedicamento;
     private readonly TelaPaciente telaPaciente;
+    private readonly TelaFuncionario telaFuncionario;
     private readonly TelaRequisicaoEntrada telaRequisicaoEntrada;
 
     public TelaPrincipal(ContextoJson contexto)
@@ -18,11 +20,13 @@ public class TelaPrincipal
         RepositorioFornecedorEmArquivo repositorioFornecedor = new RepositorioFornecedorEmArquivo(contexto);
         RepositorioMedicamentoEmArquivo repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
         RepositorioPacienteEmArquivo repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
+        RepositorioFuncionarioEmArquivo repositorioFuncionario = new RepositorioFuncionarioEmArquivo(contexto);
         RepositorioRequisicaoEntradaEmArquivo repositorioRequisicao = new RepositorioRequisicaoEntradaEmArquivo(contexto);
 
         telaFornecedor = new TelaFornecedor(repositorioFornecedor);
         telaMedicamento = new TelaMedicamento(repositorioMedicamento, repositorioFornecedor);
         telaPaciente = new TelaPaciente(repositorioPaciente);
+        telaFuncionario = new TelaFuncionario(repositorioFuncionario);
         telaRequisicaoEntrada = new TelaRequisicaoEntrada(repositorioRequisicao, repositorioMedicamento);
     }
 
@@ -52,8 +56,8 @@ public class TelaPrincipal
         if (opcaoMenuPrincipal == "3")
             return telaPaciente;
 
-        /*if (opcaoMenuPrincipal == "4")
-            return telaFuncionario;*/
+        if (opcaoMenuPrincipal == "4")
+            return telaFuncionario;
 
         if (opcaoMenuPrincipal == "5")
             return telaRequisicaoEntrada;
