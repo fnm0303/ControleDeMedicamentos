@@ -59,6 +59,8 @@ public class ContextoJson
 
         Fornecedores = contextoSalvo.Fornecedores;
         Medicamentos = contextoSalvo.Medicamentos;
+        Pacientes = contextoSalvo.Pacientes;
+        Funcionarios = contextoSalvo.Funcionarios;
         RequisicoesEntrada = contextoSalvo.RequisicoesEntrada;
     }
 }
