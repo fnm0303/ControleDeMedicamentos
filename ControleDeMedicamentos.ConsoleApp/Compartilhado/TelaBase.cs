@@ -59,6 +59,8 @@ public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase
             return;
         }
 
+        ExecutarPosValidacao(novaEntidade);
+
         if (ExisteRegistroComInformacoesExclusivas(novaEntidade))
         {
             Console.WriteLine("Digite ENTER para continuar");
@@ -113,6 +115,8 @@ public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase
             Editar();
             return;
         }
+
+        ExecutarPosValidacao(entidadeAtualizada);
 
         if (ExisteRegistroComInformacoesExclusivas(entidadeAtualizada, idSelecionado))
         {
@@ -173,5 +177,10 @@ public abstract class TelaBase<TEntidade> where TEntidade : EntidadeBase
     protected virtual bool ExistemDependenciasAtivasDoRegistro(int idRegistro)
     {
         return false;
+    }
+
+    protected virtual void ExecutarPosValidacao(TEntidade entidade)
+    {
+        // vazio por padrão
     }
 }

@@ -6,4 +6,5 @@ public abstract class EntidadeBase
 
     public abstract List<string> Validar();
     public abstract void Atualizar(EntidadeBase entidadeAtualizada);
+
 }

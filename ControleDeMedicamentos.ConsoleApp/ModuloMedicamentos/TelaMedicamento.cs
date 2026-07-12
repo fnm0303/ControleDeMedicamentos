@@ -19,14 +19,14 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaOpcoes, ITelaCrud
     {
         if (deveExibirCabecalho)
         {
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Visualização de Medicamentos");
             Console.WriteLine("---------------------------------");
         }
 
         Console.WriteLine(
-            "{0, -7} | {1, -20} | {2, -20} | {3, -20} | {4, -10}",
+            "{0, -7} | {1, -20} | {2, -20} | {3, -25} | {4, -10}",
             "Id", "Nome", "Fornecedor", "Descrição", "Estoque"
         );
 
@@ -35,7 +35,7 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaOpcoes, ITelaCrud
         foreach (Medicamento m in registros)
         {
             Console.WriteLine(
-                "{0, -7} | {1, -20} | {2, -20} | {3, -20} | {4, -10}",
+                "{0, -7} | {1, -20} | {2, -20} | {3, -25} | {4, -10}",
                 m.Id, m.Nome, m.Fornecedor.Nome, m.Descricao, m.QuantidadeEmEstoque
             );
         }

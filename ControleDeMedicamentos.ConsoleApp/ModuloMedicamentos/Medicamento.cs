@@ -10,6 +10,7 @@ public class Medicamento : EntidadeBase
     public string Descricao { get; set; } = string.Empty;
     public Fornecedor Fornecedor { get; set; } = null!;
     public List<RequisicaoEntrada> Requisicoes { get; set; } = [];
+    public List<RequisicaoSaida> Saidas { get; set; } = [];
 
     public Medicamento() { }
 
@@ -25,17 +26,26 @@ public class Medicamento : EntidadeBase
         get
         {
             int total = 0;
+            int saidas = 0;
 
             foreach (RequisicaoEntrada req in Requisicoes)
                 total += req.Quantidade;
 
-            return total;
+            foreach (RequisicaoSaida req in Saidas)
+                saidas += req.Quantidade;
+
+            return total - saidas;
         }
     }
 
     public void RegistrarRequisicao(RequisicaoEntrada requisicao)
     {
         Requisicoes.Add(requisicao);
+    }
+
+    public void RegistrarSaida(RequisicaoSaida requisicao)
+    {
+        Saidas.Add(requisicao);
     }
 
     public override List<string> Validar()

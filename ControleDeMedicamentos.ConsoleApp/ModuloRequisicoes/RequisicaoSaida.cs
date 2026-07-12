@@ -7,18 +7,33 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
 public class RequisicaoSaida : EntidadeBase
 {
     public DateTime Data { get; set; } = DateTime.Now;
+    public int Quantidade { get; set; }
     public Paciente Paciente { get; set; } = null!;
     public Medicamento MedicamentoRequisitado { get; set; } = null!;
 
     public RequisicaoSaida() { }
-    public RequisicaoSaida(Paciente paciente, Medicamento medicamentoRequisitado) : this()
+    public RequisicaoSaida(Paciente paciente, Medicamento medicamentoRequisitado, int quantidade) : this()
     {
         Paciente = paciente;
         MedicamentoRequisitado = medicamentoRequisitado;
+        Quantidade = quantidade;
+
     }
+
     public override List<string> Validar()
     {
-        throw new NotImplementedException();
+        List<string> erros = [];
+
+        if (Paciente == null)
+            erros.Add("O campo \"Paciente\" deve ser preenchido.");
+
+        if (MedicamentoRequisitado == null)
+            erros.Add("O campo \"Medicamento\" deve ser preenchido.");
+
+        if (Quantidade > MedicamentoRequisitado.QuantidadeEmEstoque)
+            erros.Add("A \"Quantidade\" deve ser menor ou igual ao estoque disponível do medicamento.");
+
+        return erros;
     }
     public override void Atualizar(EntidadeBase entidadeAtualizada)
     {
