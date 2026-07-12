@@ -22,7 +22,7 @@ public class TelaRequisicaoSaida : TelaBase<RequisicaoSaida>, ITelaOpcoes, ITela
     {
         if (deveExibirCabecalho)
         {
-            //Console.Clear();
+            Console.Clear();
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Visualização de Requisições de Saída");
             Console.WriteLine("---------------------------------");
