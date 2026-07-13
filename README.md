@@ -1,5 +1,7 @@
 # Controle de Medicamentos
 
+![Projeto Controle de Medicamentos](./.docs/ControleDeMedicamentos.gif)
+
 ## Projeto
 
 Desenvolvido durante o curso Backend da [Academia do Programador](https://www.academiadoprogramador.net) 2026
