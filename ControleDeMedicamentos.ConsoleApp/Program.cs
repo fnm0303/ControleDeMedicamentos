@@ -1,4 +1,25 @@
-﻿using System.Text.Json;
+﻿// Instancia o construtor do servidor...
+// ...configura as dependências internas (controladores e serviços) e externas (repositórios)
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
+
+// Constroi a instância do servidor...
+// ...configura os middlewares executados durante requisições
+WebApplication app = builder.Build();
+
+// Mapeia controladores e rotas que serão gerenciadas pelo servidor
+//middlewares
+app.UseStaticFiles();
+app.UseRouting();
+
+//conectando URLs aos controlles (rotas)
+app.MapDefaultControllerRoute();
+
+// Inicia o loop do servidor web, escuta por requisições na porta especificada
+app.Run();
+
+/*using System.Text.Json;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 
@@ -58,4 +79,4 @@ while (true)
                 telaBase.VisualizarTodos(true);
         }
     }
-}
+}*/
