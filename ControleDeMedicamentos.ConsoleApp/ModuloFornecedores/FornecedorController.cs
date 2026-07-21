@@ -18,4 +18,18 @@ public sealed class FornecedorController : Controller
         List<Fornecedor> fornecedores = repositorio.SelecionarTodos();
         return View(fornecedores); //retorna uma página View
     }
+
+    [HttpGet]
+    public ActionResult Cadastrar()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult Cadastrar(string nome, string telefone, string cnpj)
+    {
+        Fornecedor fornecedor = new Fornecedor(nome, telefone, cnpj);
+        repositorio.Cadastrar(fornecedor);
+        return RedirectToAction(nameof(Listar));
+    }
 }
