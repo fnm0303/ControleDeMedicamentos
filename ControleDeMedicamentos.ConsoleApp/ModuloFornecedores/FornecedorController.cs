@@ -32,4 +32,33 @@ public sealed class FornecedorController : Controller
         repositorio.Cadastrar(fornecedor);
         return RedirectToAction(nameof(Listar));
     }
+
+    [HttpGet]
+    public ActionResult Editar(int id)
+    {
+        Fornecedor? fornecedor = repositorio.SelecionarPorId(id);
+
+        if (fornecedor == null)
+            return NotFound();
+
+        return View(fornecedor);
+    }
+
+    [HttpPost]
+    public ActionResult Editar(int id, string nome, string telefone, string cnpj)
+    {
+        Fornecedor? fornecedor = repositorio.SelecionarPorId(id);
+
+        if (fornecedor == null)
+            return NotFound();
+
+        Fornecedor fornecedorAtualizado = new Fornecedor(nome, telefone, cnpj);
+
+        bool conseguiuEditar = repositorio.Editar(id, fornecedorAtualizado);
+
+        if (!conseguiuEditar)
+            return NotFound();
+
+        return RedirectToAction(nameof(Listar));
+    }
 }
