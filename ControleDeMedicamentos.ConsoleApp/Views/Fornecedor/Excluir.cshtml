@@ -1,0 +1,22 @@
+@using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
+@model Fornecedor
+
+<h2>Controle de Medicamentos</h2>
+
+<hr />
+<a href="/">Início</a> /
+<a href="/Fornecedor/Listar">Fornecedores</a> / @*Link*@
+<hr />
+
+<h1>Excluir Fornecedor</h1>
+
+<form action="/Fornecedor/Excluir/@Model.Id" method="post">
+    <p>
+        Você deseja realmente excluir o registro @Model.Nome? Esta ação é irreversível.
+    </p>
+    <button type="submit">Confirmar Exclusão</button>
+</form>
+
+<p>
+    <a href="Listar">Voltar para a Listagem</a>
+</p>
