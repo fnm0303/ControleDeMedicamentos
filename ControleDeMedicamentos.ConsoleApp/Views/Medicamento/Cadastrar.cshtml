@@ -1,3 +1,4 @@
+@using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 <h2>Controle de Medicamentos</h2>
 
 <hr />
@@ -23,7 +24,10 @@
         <label for="fornecedorId"> Fornecedor </label>
         <br />
         <select input id="fornecedorId" name="fornecedorId">
-            <option value="1">Opção 1</option>
+            @foreach (Fornecedor f in ViewBag.Fornecedores)
+            {
+                <option value="@f.Id">@f.Nome</option>
+            }
         </select>
     </div>
     <br />
