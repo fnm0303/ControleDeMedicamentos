@@ -1,19 +1,19 @@
-@using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
-@model List<Fornecedor>
+@using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario
+@model List<ListarFuncionarioViewModel>
 
 <h2>Controle de Medicamentos</h2>
 
 <hr />
 <a href="/">Início</a> /
 <a href="/Fornecedor/Listar">Fornecedores</a> / @*Link*@
-<a href="/Medicamento/Listar">Medicamentos</a> /
-<a href="/Funcionario/Listar">Funcionários</a> /
+<a href="/Medicamento/Listar">Medicamentos</a>
+<a href="/Funcionario/Listar">Funcionários</a>
 <hr />
 
-<h1>Listagem de Fornecedores</h1>
+<h1>Listagem de Funcionários</h1>
 
 <p>
-    <a href="Cadastrar">Cadastrar Fornecedor</a>
+    <a href="Cadastrar">Cadastrar Funcionário</a>
 </p>
 
 <table>
@@ -22,19 +22,17 @@
             <th>Id</th>
             <th>Nome</th>
             <th>Telefone</th>
-            <th>CNPJ</th>
             <th>Ações</th>
         </tr>
     </thead>
 
     <tbody> @* Corpo *@
-        @foreach (Fornecedor f in Model)
+        @foreach (ListarFuncionarioViewModel f in Model)
         {
             <tr>
                 <td>@f.Id</td>
                 <td>@f.Nome</td>
                 <td>@f.Telefone</td>
-                <td>@f.Cnpj</td>
                 <td>
                     <a href="Editar/@f.Id">Editar</a>
                     <span> | </span>
