@@ -31,4 +31,20 @@ public sealed class FuncionarioController : Controller
 
         return View(viewModels); //tudo isso para não passar o CPF, não passar todas as informações de uma lista
     }
+
+    [HttpGet]
+    public ActionResult Cadastrar()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult Cadastrar(CadastrarFuncionarioViewModel cadastrarVm)
+    {
+        Funcionario funcionario = new Funcionario(cadastrarVm.Nome, cadastrarVm.Telefone, cadastrarVm.CPF);
+
+        repositorioFuncionario.Cadastrar(funcionario);
+
+        return RedirectToAction(nameof(Listar));
+    }
 }
