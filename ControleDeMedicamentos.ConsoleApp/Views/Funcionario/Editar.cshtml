@@ -1,0 +1,35 @@
+@model EditarFuncionarioViewModel
+<h2>Controle de Medicamentos</h2>
+
+<hr />
+<a asp-controller="Home" asp-action="Index">Início</a> /
+<a asp-controller="Fornecedor" asp-action="Listar">Fornecedores</a> / @*Link*@
+<a asp-controller="Medicamento" asp-action="Listar">Medicamentos</a> /
+<a asp-controller="Funcionario" asp-action="Listar">Funcionários</a> /
+<hr />
+
+<h1>Editar Funcionário</h1>
+
+<form asp-action="Editar" asp-route-id="@Model.Id" method="post">
+    <div>
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" type="text">
+    </div>
+    <br />
+    <div>
+        <label asp-for="Telefone"></label>
+        <input asp-for="Telefone" type="text">
+    </div>
+    <br />
+    <div>
+        <label asp-for="CPF"></label>
+        <input asp-for="CPF" type="text">
+        <br />
+    </div>
+    <br />
+    <button type="submit">Confirmar Edição</button>
+</form>
+
+<p>
+    <a asp-action="Listar">Voltar para a Listagem</a>
+</p>

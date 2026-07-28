@@ -47,4 +47,30 @@ public sealed class FuncionarioController : Controller
 
         return RedirectToAction(nameof(Listar));
     }
+
+    [HttpGet]
+    public ActionResult Editar(int id)
+    {
+        Funcionario? funcionarioSelecionado = repositorioFuncionario.SelecionarPorId(id);
+
+        if (funcionarioSelecionado == null)
+            return NotFound();
+
+        EditarFuncionarioViewModel vm = new EditarFuncionarioViewModel(id, funcionarioSelecionado.Nome, funcionarioSelecionado.Telefone, funcionarioSelecionado.CPF);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public ActionResult Editar(EditarFuncionarioViewModel editarVm)
+    {
+        Funcionario funcionarioAtualizado = new Funcionario(editarVm.Nome, editarVm.Telefone, editarVm.CPF);
+
+        bool conseguiuEditar = repositorioFuncionario.Editar(editarVm.Id, funcionarioAtualizado);
+
+        if (!conseguiuEditar)
+            return NotFound();
+
+        return RedirectToAction(nameof(Listar));
+    }
 }
