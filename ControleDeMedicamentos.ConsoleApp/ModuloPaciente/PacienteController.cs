@@ -72,4 +72,28 @@ public sealed class PacienteController : Controller
         return RedirectToAction(nameof(Listar));
     }
 
+    [HttpGet]
+    public ActionResult Excluir(int id)
+    {
+        Paciente? pacienteSelecionado = repositorioPaciente.SelecionarPorId(id);
+
+        if (pacienteSelecionado == null)
+            return NotFound();
+
+        ExcluirPacienteViewModel vm = new ExcluirPacienteViewModel(id, pacienteSelecionado.Nome);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public ActionResult Excluir(ExcluirPacienteViewModel excluirVm)
+    {
+        bool conseguiuExcluir = repositorioPaciente.Excluir(excluirVm.Id);
+
+        if (!conseguiuExcluir)
+            return NotFound();
+
+        return RedirectToAction(nameof(Listar));
+    }
+
 }
