@@ -1,4 +1,5 @@
-@model List<Fornecedor>
+@using ControleDeMedicamentos.ConsoleApp.ModuloPaciente
+@model List<ListarPacienteViewModel>
 
 <h2>Controle de Medicamentos</h2>
 
@@ -10,10 +11,10 @@
 <a asp-controller="Paciente" asp-action="Listar">Pacientes</a> /
 <hr />
 
-<h1>Listagem de Fornecedores</h1>
+<h1>Listagem de Pacientes</h1>
 
 <p>
-    <a href="Cadastrar">Cadastrar Fornecedor</a>
+    <a href="Cadastrar">Cadastrar Paciente</a>
 </p>
 
 <table>
@@ -22,23 +23,23 @@
             <th>Id</th>
             <th>Nome</th>
             <th>Telefone</th>
-            <th>CNPJ</th>
+            <th>CartaoSus</th>
             <th>Ações</th>
         </tr>
     </thead>
 
     <tbody> @* Corpo *@
-        @foreach (Fornecedor f in Model)
+        @foreach (ListarPacienteViewModel p in Model)
         {
             <tr>
-                <td>@f.Id</td>
-                <td>@f.Nome</td>
-                <td>@f.Telefone</td>
-                <td>@f.Cnpj</td>
+                <td>@p.Id</td>
+                <td>@p.Nome</td>
+                <td>@p.Telefone</td>
+                <td>@p.CartaoSus</td>
                 <td>
-                    <a href="Editar/@f.Id">Editar</a>
+                    <a href="Editar/@p.Id">Editar</a>
                     <span> | </span>
-                    <a href="Excluir/@f.Id">Excluir</a>
+                    <a href="Excluir/@p.Id">Excluir</a>
                     <span> | </span>
                 </td>
             </tr>
