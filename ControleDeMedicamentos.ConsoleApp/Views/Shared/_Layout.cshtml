@@ -1,17 +1,28 @@
-<h2>Controle de Medicamentos</h2>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<hr />
-<a asp-controller="Home" asp-action="Index">Início</a> /
-<a asp-controller="Fornecedor" asp-action="Listar">Fornecedores</a> / @*Link*@
-<a asp-controller="Medicamento" asp-action="Listar">Medicamentos</a> /
-<a asp-controller="Funcionario" asp-action="Listar">Funcionários</a> /
-<a asp-controller="Paciente" asp-action="Listar">Pacientes</a> /
-<hr />
+<head>
+    <title>@ViewBag.Titulo | Controle de Medicamentos</title>
+</head>
 
-<header>
-    <h1>@ViewBag.Titulo</h1>
-</header>
+<body>
+    <h2>Controle de Medicamentos</h2>
 
-<main>
-    @RenderBody()
-</main>
+    <hr />
+    <a asp-controller="Home" asp-action="Index">Início</a> /
+    <a asp-controller="Fornecedor" asp-action="Listar">Fornecedores</a> / @*Link*@
+    <a asp-controller="Medicamento" asp-action="Listar">Medicamentos</a> /
+    <a asp-controller="Funcionario" asp-action="Listar">Funcionários</a> /
+    <a asp-controller="Paciente" asp-action="Listar">Pacientes</a> /
+    <hr />
+
+    <header>
+        <h1>@ViewBag.Titulo</h1>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+</body>
+
+</html>
