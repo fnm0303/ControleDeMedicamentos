@@ -2,10 +2,8 @@
 
 @{
     Layout = "_Layout"; //não precisa passar todo o caminho
-    ViewBag.Titulo = "Página Inicial";
+    ViewBag.Titulo = "Excluir Funcionário";
 }
-
-<h1>Excluir Funcionário</h1>
 
 <form asp-action="Excluir" asp-route-id="@Model.Id" method="post">
     <p>

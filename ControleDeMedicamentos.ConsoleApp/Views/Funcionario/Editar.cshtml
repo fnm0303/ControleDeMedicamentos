@@ -1,10 +1,8 @@
 @model EditarFuncionarioViewModel
 @{
     Layout = "_Layout"; //não precisa passar todo o caminho
-    ViewBag.Titulo = "Página Inicial";
+    ViewBag.Titulo = "Editar Funcionário";
 }
-
-<h1>Editar Funcionário</h1>
 
 <form asp-action="Editar" asp-route-id="@Model.Id" method="post">
     <div>

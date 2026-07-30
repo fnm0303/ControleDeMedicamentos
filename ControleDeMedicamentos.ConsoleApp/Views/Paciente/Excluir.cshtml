@@ -2,10 +2,8 @@
 @model ExcluirPacienteViewModel
 @{
     Layout = "_Layout"; //não precisa passar todo o caminho
-    ViewBag.Titulo = "Página Inicial";
+    ViewBag.Titulo = "Excluir Pacientel";
 }
-
-<h1>Excluir Paciente</h1>
 
 <form asp-action="Excluir" asp-route-id="@Model.Id" method="post">
     <p>
