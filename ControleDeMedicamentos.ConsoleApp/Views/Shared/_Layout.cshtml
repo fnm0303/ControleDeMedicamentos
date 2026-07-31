@@ -1,31 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
+<head class="container">
     <meta charset="UTF-8" /> @*reconhecer caracteres*@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> @*renderizar a pg para qualquer tamanho da
     tela do dispositivo*@
+    
     <title>@ViewBag.Titulo | Controle de Medicamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    @*CSS*@
+    @*<style> SUBSTITUÍDO PELO BOOTSTRAP
+            body {
+                background-color: rgb(67, 133, 133);
+                margin: 0;
+            }
+
+            h1,
+            h2 {
+                color: rgb(203, 233, 203);
+            }
+
+            .botao-principal {
+                background-color: rgb(203, 233, 203);
+                color: rgb(48, 92, 92);
+
+                border: 1px solid rgb(48, 92, 92);
+                border-radius: 6px;
+
+                padding-right: 10px;
+                padding-left: 10px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+
+                cursor: pointer;
+            }
+    </style>*@
 </head>
 
-<body>
-    <h2>Controle de Medicamentos</h2>
+<body data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">Controle de Medicamentos</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="ms-auto navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" asp-controller="Fornecedor" asp-action="Listar">Fornecedor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" asp-controller="Medicamento" asp-action="Listar">Medicamento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" asp-controller="Funcionário" asp-action="Listar">Funcionário</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" asp-controller="Paciente" asp-action="Listar">Paciente</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+      </nav>
 
-    <hr />
-    <a asp-controller="Home" asp-action="Index">Início</a> /
-    <a asp-controller="Fornecedor" asp-action="Listar">Fornecedores</a> / @*Link*@
-    <a asp-controller="Medicamento" asp-action="Listar">Medicamentos</a> /
-    <a asp-controller="Funcionario" asp-action="Listar">Funcionários</a> /
-    <a asp-controller="Paciente" asp-action="Listar">Pacientes</a> /
-    <hr />
-
-    <header>
+    <header class="container mt-4">
         <h1>@ViewBag.Titulo</h1>
     </header>
 
-    <main>
+    <main class="container mt-4">
         @RenderBody()
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
