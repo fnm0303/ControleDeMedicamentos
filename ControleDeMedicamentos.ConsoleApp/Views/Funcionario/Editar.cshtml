@@ -5,25 +5,23 @@
 }
 
 <form asp-action="Editar" asp-route-id="@Model.Id" method="post">
-    <div>
+    <div class="col-4">
         <label asp-for="Nome"></label>
-        <input asp-for="Nome" type="text">
+        <input class="form-control bg-light" asp-for="Nome" type="text">
     </div>
-    <br />
-    <div>
-        <label asp-for="Telefone"></label>
-        <input asp-for="Telefone" type="text">
+    <div class="row g-3 align-items-center">
+        <div class="col-3">
+            <label asp-for="Telefone"></label>
+            <input class="form-control bg-light" asp-for="Telefone" type="text">
+        </div>
+        <div class="col-3">
+            <label asp-for="CPF"></label>
+            <input class="form-control bg-light" asp-for="CPF" type="text">
+        </div>
     </div>
-    <br />
-    <div>
-        <label asp-for="CPF"></label>
-        <input asp-for="CPF" type="text">
-        <br />
-    </div>
-    <br />
-    <button type="submit">Confirmar Edição</button>
 </form>
 
-<p>
-    <a asp-action="Listar">Voltar para a Listagem</a>
-</p>
+<div class="d-flex gap-3 mt-4">
+    <button type="submit" class="btn btn-success">Editar</button>
+    <a class="btn btn-primary" href="/Funcionario/Listar">Voltar para a Listagem</a>
+</div>

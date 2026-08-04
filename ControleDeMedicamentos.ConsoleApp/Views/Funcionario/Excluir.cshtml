@@ -6,12 +6,13 @@
 }
 
 <form asp-action="Excluir" asp-route-id="@Model.Id" method="post">
-    <p>
+    <div class="col-6 alert alert-danger" role="alert">
         Você deseja realmente excluir o registro @Model.Nome? Esta ação é irreversível.
-    </p>
-    <button type="submit" class="btn btn-success">Confirmar Exclusão</button>
+    </div>
+
 </form>
 
-<p>
-    <a asp-action="Listar">Voltar para a Listagem</a>
-</p>
+<div>
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a class="btn btn-primary" href="/Funcionario/Listar">Voltar para a Listagem</a>
+</div>
