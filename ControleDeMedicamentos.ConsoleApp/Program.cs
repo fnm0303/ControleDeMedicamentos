@@ -10,12 +10,12 @@ WebApplication app = builder.Build();
 
 // Mapeia controladores e rotas que serão gerenciadas pelo servidor
 //middlewares
-app.UseStaticFiles();
 app.UseRouting();
 
 //conectando URLs aos controlles (rotas)
 app.MapDefaultControllerRoute();
 
+app.UseStaticFiles();
 // Inicia o loop do servidor web, escuta por requisições na porta especificada
 app.Run();
 
