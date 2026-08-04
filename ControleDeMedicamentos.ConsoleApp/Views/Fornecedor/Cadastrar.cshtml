@@ -4,23 +4,24 @@
 }
 
 <form action="Cadastrar" method="post">
-    <div>
+    <div class="col-auto">
         <label for="nome"> Nome </label>
-        <input id="nome" name="nome" type="text">
+        <input id="nome" name="nome" type="text" class="form-control bg-light">
+    </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="telefone" class="col-form-label">Telefone</label>
+            <input id="telefone" name="telefone" type="text" class="form-control bg-light">
+            <span class="form-text">(xx) xxxxx-xxxx</span>
+        </div>
+        <div class="col-auto">
+            <label for="cnpj" class="col-form-label"> CNPJ </label>
+            <input id="cnpj" name="cnpj" type="text" class="form-control bg-light">
+            <span class="form-text">xx.xxx.xxx/xxxx-xx</span>
+        </div>
     </div>
     <br />
-    <div>
-        <label for="telefone"> Telefone </label>
-        <input id="telefone" name="telefone" type="text">
-    </div>
-    <br />
-    <div>
-        <label for="cnpj"> CNPJ </label>
-        <input id="cnpj" name="cnpj" type="text">
-        <br />
-    </div>
-    <br />
-    <button type="submit">Cadastrar</button>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
 </form>
 
 <p>
