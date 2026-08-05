@@ -8,11 +8,8 @@
 <form action="/Fornecedor/Excluir/@Model.Id" method="post">
     <div class="col-6 alert alert-danger" role="alert">
         Você deseja realmente excluir o registro @Model.Nome? Esta ação é irreversível.
+        <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
     </div>
 
 </form>
-
-<div>
-    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
-    <a class="btn btn-primary" href="/Fornecedor/Listar">Voltar para a Listagem</a>
-</div>
+<a class="btn btn-primary" href="/Fornecedor/Listar">Voltar para a Listagem</a>
