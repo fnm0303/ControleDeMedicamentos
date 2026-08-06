@@ -12,12 +12,41 @@
 @if (Model.Count == 0)
 {
     <div class="alert alert-warning mt-4" role="alert">
-
+        Não há nenhum fornecedor cadastrado.
     </div>
 }
 
-<table class="table table-success table-striped">
-    <thead> @*cabeçalho*@
+else
+{
+    <div class="row row-cols-1 rows-cols-md-2 row-cols-lg-4 g-3 mt-3">
+        @foreach (Fornecedor f in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h4>@f.Nome</h4>
+                            <span class="badge text-bg-secondary">@f.Id</span>
+                        </div>
+                        <dl class="row mb-2">
+                            <dt class="col-sm-4">Telefone</dt>
+                            <dd class="col-sm-8">@f.Telefone</dd>
+                            <dt class="col-sm-4">CNPJ</dt>
+                            <dd class="col-sm-8">@f.Cnpj</dd>
+                        </dl>
+                        <div class="d-flex gap-1 justify-content-end mt-auto">
+                            <a class="btn btn-sm btn-outline-success" href="Editar/@f.Id">Editar</a>
+                            <a class="btn btn-sm btn-outline-danger" href="Excluir/@f.Id">Excluir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+    @* <table class="table table-success table-striped">
+    <thead> cabeçalho
         <tr>
             <th>Id</th>
             <th>Nome</th>
@@ -27,7 +56,7 @@
         </tr>
     </thead>
 
-    <tbody> @* Corpo *@
+    <tbody>
         @foreach (Fornecedor f in Model)
         {
             <tr>
@@ -44,4 +73,6 @@
         }
 
     </tbody>
-</table>
+</table> *@
+
+}
