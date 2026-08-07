@@ -7,35 +7,49 @@
 }
 
 <p>
-    <a class="btn btn-success" href="Cadastrar">Cadastrar Paciente</a>
+    <a class="btn btn-success" href="Cadastrar">
+        <i class="bi bi-shield-check"></i>
+        Cadastrar Paciente
+    </a>
 </p>
 
-<table class="table table-success table-striped">
-    <thead> @*cabeçalho*@
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>CartaoSus</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning mt-4" role="alert">
+        Não há nenhum paciente cadastrado.
+    </div>
+}
 
-    <tbody> @* Corpo *@
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 mt-3">
         @foreach (ListarPacienteViewModel p in Model)
         {
-            <tr>
-                <td>@p.Id</td>
-                <td>@p.Nome</td>
-                <td>@p.Telefone</td>
-                <td>@p.CartaoSus</td>
-                <td>
-                    <a class="btn btn-sm btn-outline-success" href="Editar/@p.Id">Editar</a>
-                    <span> | </span>
-                    <a class="btn btn-sm btn-outline-danger" href="Excluir/@p.Id">Excluir</a>
-                </td>
-            </tr>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h4>@p.Nome</h4>
+                            <span class="badge text-bg-secondary">@p.Id</span>
+                        </div>
+                        <dl class="row mb-2">
+                            <dt class="col-sm-5">Telefone</dt>
+                            <dd class="col-sm-8">@p.Telefone</dd>
+                            <dt class="col-sm-5">Cartão SUS</dt>
+                            <dd class="col-sm-8">@p.CartaoSus</dd>
+                        </dl>
+                        <div class="d-flex gap-1 justify-content-end mt-auto">
+                            <a class="btn btn-sm btn-outline-success" title="Editar" href="Editar/@p.Id">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a class="btn btn-sm btn-outline-danger" title="Excluir" href="Excluir/@p.Id">
+                                <i class="bi bi-trash3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
+    </div>
+}
 
-    </tbody>
-</table>
