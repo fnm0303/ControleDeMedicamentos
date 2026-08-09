@@ -17,7 +17,6 @@ public class RequisicaoSaida : EntidadeBase
         Paciente = paciente;
         MedicamentoRequisitado = medicamentoRequisitado;
         Quantidade = quantidade;
-
     }
 
     public override List<string> Validar()
