@@ -64,6 +64,19 @@
         <li class="nav-item">
           <a class="nav-link active text-white" aria-current="page" asp-controller="Paciente" asp-action="Listar">Paciente</a>
         </li>
+        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active text-white" href="#" id="navbarDropdownEstoque" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Requisições
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownEstoque">
+                            <li>
+                                <a class="dropdown-item" asp-controller="RequisicaoEntrada" asp-action="Listar">Entrada</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-controller="RequisicaoSaida" asp-action="Listar">Saída</a>
+                            </li>
+                        </ul>
+                    </li>
       </ul>
     </div>
   </div>
