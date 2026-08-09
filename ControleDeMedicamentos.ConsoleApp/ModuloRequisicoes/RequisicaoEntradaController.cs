@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
 
-public sealed class RequisacaoEntradaController : Controller
+public sealed class RequisicaoEntradaController : Controller
 {
     private readonly RepositorioRequisicaoEntradaEmArquivo repositorioEntrada;
-    public RequisacaoEntradaController()
+    public RequisicaoEntradaController()
     {
         ContextoJson contexto = new ContextoJson();
 
@@ -24,7 +24,7 @@ public sealed class RequisacaoEntradaController : Controller
 
         foreach (RequisicaoEntrada e in entradas)
         {
-            ListarRequisicaoEntradaViewModel vm = new ListarRequisicaoEntradaViewModel(e.Id, e.Medicamento, e.Quantidade);
+            ListarRequisicaoEntradaViewModel vm = new ListarRequisicaoEntradaViewModel(e.Id, e.Medicamento, e.Quantidade, e.Data);
             viewModels.Add(vm);
         }
 

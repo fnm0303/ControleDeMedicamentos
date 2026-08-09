@@ -1,3 +1,3 @@
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
 
-public record ListarRequisicaoEntradaViewModel(int Id, Medicamento Medicamento, int Quantidade);
+public record ListarRequisicaoEntradaViewModel(int Id, Medicamento Medicamento, int Quantidade, DateTime Data);

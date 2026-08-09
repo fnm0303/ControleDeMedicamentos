@@ -1,0 +1,54 @@
+@using ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes
+@model List<ListarRequisicaoEntradaViewModel>
+
+@{
+    Layout = "_Layout"; //não precisa passar todo o caminho
+    ViewBag.Titulo = "Listagem de Requisições de Entrada";
+}
+
+<p>
+    <a class="btn btn-success" href="Cadastrar">
+        <i class="bi bi-person-fill-check"></i>
+        Cadastrar Requisição de Entrada
+    </a>
+</p>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning mt-4" role="alert">
+        Não há nenhuma requisição de entrada cadastrada.
+    </div>
+}
+
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 mt-3">
+        @foreach (ListarRequisicaoEntradaViewModel e in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h4>@e.Medicamento.Nome</h4>
+                            <span class="badge text-bg-secondary">@e.Id</span>
+                        </div>
+                        <dl class="row mb-2">
+                            <dt class="col-sm-6">Quantidade</dt>
+                            <dd class="col-sm-8">@e.Quantidade</dd>
+                            <dt class="col-sm-8">Data do Registro</dt>
+                            <dd class="col-sm-8">@e.Data</dd>
+                        </dl>
+                        <div class="d-flex gap-1 justify-content-end mt-auto">
+                            <a class="btn btn-sm btn-outline-success" title="Editar" href="Editar/@e.Id">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a class="btn btn-sm btn-outline-danger" title="Excluir" href="Excluir/@e.Id">
+                                <i class="bi bi-trash3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
