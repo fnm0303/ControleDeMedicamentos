@@ -38,6 +38,7 @@ public sealed class RequisicaoEntradaController : Controller
     [HttpGet]
     public ActionResult Cadastrar()
     {
+        ViewBag.Medicamentos = new SelectList(repositorioMedicamento.SelecionarTodos(), "Id", "Nome");
         return View();
     }
 

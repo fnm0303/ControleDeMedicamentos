@@ -3,4 +3,3 @@ public record ListarRequisicaoEntradaViewModel(int Id, Medicamento Medicamento, 
 
 public record CadastrarRequisicaoEntradaViewModel(int MedicamentoId, int Quantidade);
 
-public record CadastrarRequisicaoEntradaVm();
