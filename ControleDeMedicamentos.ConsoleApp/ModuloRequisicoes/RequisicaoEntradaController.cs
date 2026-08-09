@@ -1,11 +1,14 @@
 using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
+using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
 
 public sealed class RequisicaoEntradaController : Controller
 {
     private readonly RepositorioRequisicaoEntradaEmArquivo repositorioEntrada;
+    private readonly RepositorioMedicamentoEmArquivo repositorioMedicamento;
     public RequisicaoEntradaController()
     {
         ContextoJson contexto = new ContextoJson();
@@ -13,6 +16,7 @@ public sealed class RequisicaoEntradaController : Controller
         contexto.Carregar();
 
         repositorioEntrada = new RepositorioRequisicaoEntradaEmArquivo(contexto);
+        repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
     }
 
     [HttpGet]
@@ -30,4 +34,26 @@ public sealed class RequisicaoEntradaController : Controller
 
         return View(viewModels);
     }
+
+    [HttpGet]
+    public ActionResult Cadastrar()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult Cadastrar(CadastrarRequisicaoEntradaViewModel cadastrarVm)
+    {
+        Medicamento? medicamento = repositorioMedicamento.SelecionarPorId(cadastrarVm.MedicamentoId);
+
+        if (medicamento == null)
+            return NotFound();
+
+        RequisicaoEntrada entrada = new RequisicaoEntrada(medicamento, cadastrarVm.Quantidade);
+
+        repositorioEntrada.Cadastrar(entrada);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
 }
