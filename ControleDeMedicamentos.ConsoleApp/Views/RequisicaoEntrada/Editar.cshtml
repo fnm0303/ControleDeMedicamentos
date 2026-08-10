@@ -1,0 +1,28 @@
+@model EditarRequisicaoEntradaViewModel
+@{
+    Layout = "_Layout"; //não precisa passar todo o caminho
+    ViewBag.Titulo = "Editar Requisição de Entrada";
+}
+
+<form asp-action="Editar" asp-route-id="@Model.Id" method="post">
+    <div class="col-6">
+        <label asp-for="MedicamentoId"></label>
+        <input asp-for="MedicamentoId" type="text" class="form-control bg-light">
+    </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label class="col-form-label" asp-for="Quantidade"></label>
+            <input asp-for="Quantidade" type="text" class="form-control bg-light">
+        </div>
+    </div>
+    <div class="d-flex gap-3 mt-4">
+        <button class="btn btn-success" type="submit">
+            <i class="bi bi-check-circle"></i>
+            Confirmar Edição
+        </button>
+        <a class="btn btn-primary" asp-action="Listar">
+            <i class="bi bi-arrow-return-left"></i>
+            Voltar para a Listagem
+        </a>
+    </div>
+</form>

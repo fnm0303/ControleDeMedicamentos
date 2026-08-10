@@ -3,5 +3,8 @@ public record ListarRequisicaoEntradaViewModel(int Id, Medicamento Medicamento, 
 
 public record CadastrarRequisicaoEntradaViewModel(int MedicamentoId, int Quantidade);
 
+public record EditarRequisicaoEntradaViewModel(int Id, int MedicamentoId, int Quantidade);
 public record ExcluirRequisicaoEntradaViewModel(int Id);
+
+
 

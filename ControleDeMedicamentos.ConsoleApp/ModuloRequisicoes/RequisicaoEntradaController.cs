@@ -58,6 +58,37 @@ public sealed class RequisicaoEntradaController : Controller
     }
 
     [HttpGet]
+    public ActionResult Editar(int id)
+    {
+        RequisicaoEntrada? entradaSelecionada = repositorioEntrada.SelecionarPorId(id);
+
+        if (entradaSelecionada == null)
+            return NotFound();
+
+        EditarRequisicaoEntradaViewModel vm = new EditarRequisicaoEntradaViewModel(entradaSelecionada.Id, entradaSelecionada.Medicamento.Id, entradaSelecionada.Quantidade);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public ActionResult Editar(EditarRequisicaoEntradaViewModel editarVm)
+    {
+        Medicamento? medicamento = repositorioMedicamento.SelecionarPorId(editarVm.MedicamentoId);
+
+        if (medicamento == null)
+            return NotFound();
+
+        RequisicaoEntrada requisicaoAtualizada = new RequisicaoEntrada(medicamento, editarVm.Quantidade);
+
+        bool conseguiuEditar = repositorioEntrada.Editar(editarVm.Id, requisicaoAtualizada);
+
+        if (!conseguiuEditar)
+            return NotFound();
+
+        return RedirectToAction(nameof(Listar));
+    }
+
+    [HttpGet]
     public ActionResult Excluir(int id)
     {
         RequisicaoEntrada? entradaSelecionada = repositorioEntrada.SelecionarPorId(id);
