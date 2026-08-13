@@ -66,6 +66,30 @@ public sealed class RequisicaoSaidaController : Controller
         return RedirectToAction(nameof(Listar));
     }
 
+    [HttpGet]
+    public ActionResult Excluir(int id)
+    {
+        RequisicaoSaida? saidaSelecionada = repositorioSaida.SelecionarPorId(id);
+
+        if (saidaSelecionada == null)
+            return NotFound();
+
+        ExcluirRequisicaoSaidaViewModel vm = new ExcluirRequisicaoSaidaViewModel(id);
+
+        return View(vm);
+    }
+
+    [HttpPost]
+    public ActionResult Excluir(ExcluirRequisicaoSaidaViewModel excluirVm)
+    {
+        bool conseguiuExcluir = repositorioSaida.Excluir(excluirVm.Id);
+
+        if (!conseguiuExcluir)
+            return NotFound();
+
+        return RedirectToAction(nameof(Listar));
+    }
+
 
 }
 

@@ -1,7 +1,7 @@
-@model ExcluirRequisicaoEntradaViewModel
+@model ExcluirRequisicaoSaidaViewModel
 @{
     Layout = "_Layout"; //não precisa passar todo o caminho
-    ViewBag.Titulo = "Excluir Requisição de Entrada";
+    ViewBag.Titulo = "Excluir Requisição de Saída";
 }
 
 <form asp-action="Excluir" asp-route-id="@Model.Id" method="post">
