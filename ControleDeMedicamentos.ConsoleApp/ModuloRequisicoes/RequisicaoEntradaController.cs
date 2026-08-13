@@ -9,14 +9,10 @@ public sealed class RequisicaoEntradaController : Controller
 {
     private readonly RepositorioRequisicaoEntradaEmArquivo repositorioEntrada;
     private readonly RepositorioMedicamentoEmArquivo repositorioMedicamento;
-    public RequisicaoEntradaController()
+    public RequisicaoEntradaController(RepositorioRequisicaoEntradaEmArquivo repositorioEntrada, RepositorioMedicamentoEmArquivo repositorioMedicamento)
     {
-        ContextoJson contexto = new ContextoJson();
-
-        contexto.Carregar();
-
-        repositorioEntrada = new RepositorioRequisicaoEntradaEmArquivo(contexto);
-        repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
+        this.repositorioEntrada = repositorioEntrada;
+        this.repositorioMedicamento = repositorioMedicamento;
     }
 
     [HttpGet]

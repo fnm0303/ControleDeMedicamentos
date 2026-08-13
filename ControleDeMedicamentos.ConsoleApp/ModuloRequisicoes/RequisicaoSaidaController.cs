@@ -12,15 +12,13 @@ public sealed class RequisicaoSaidaController : Controller
     private readonly RepositorioPacienteEmArquivo repositorioPaciente;
     private readonly RepositorioMedicamentoEmArquivo repositorioMedicamento;
 
-    public RequisicaoSaidaController()
+    public RequisicaoSaidaController(RepositorioRequisicaoSaidaEmArquivo repositorioSaida,
+    RepositorioPacienteEmArquivo repositorioPaciente,
+    RepositorioMedicamentoEmArquivo repositorioMedicamento)
     {
-        ContextoJson contexto = new ContextoJson();
-
-        contexto.Carregar();
-
-        repositorioSaida = new RepositorioRequisicaoSaidaEmArquivo(contexto);
-        repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
-        repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
+        this.repositorioSaida = repositorioSaida;
+        this.repositorioMedicamento = repositorioMedicamento;
+        this.repositorioPaciente = repositorioPaciente;
     }
 
     [HttpGet]

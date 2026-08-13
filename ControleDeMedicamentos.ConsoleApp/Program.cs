@@ -1,6 +1,22 @@
 ﻿// Instancia o construtor do servidor...
 // ...configura as dependências internas (controladores e serviços) e externas (repositórios)
+using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
+using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
+using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
+using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+using ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+//Adiciona e injeta UMA instância por requisição/conexão
+builder.Services.AddScoped<ContextoJson>(ContextoJson.InjetarContexto);
+builder.Services.AddScoped<RepositorioMedicamentoEmArquivo>();
+builder.Services.AddScoped<RepositorioFornecedorEmArquivo>();
+builder.Services.AddScoped<RepositorioFuncionarioEmArquivo>();
+builder.Services.AddScoped<RepositorioPacienteEmArquivo>();
+builder.Services.AddScoped<RepositorioRequisicaoEntradaEmArquivo>();
+builder.Services.AddScoped<RepositorioRequisicaoSaidaEmArquivo>();
 
 builder.Services.AddControllersWithViews();
 
