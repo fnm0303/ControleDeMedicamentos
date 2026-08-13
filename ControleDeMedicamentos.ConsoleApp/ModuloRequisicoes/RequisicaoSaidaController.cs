@@ -1,13 +1,15 @@
 using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
+using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
 
 public sealed class RequisicaoSaidaController : Controller
 {
     private readonly RepositorioRequisicaoSaidaEmArquivo repositorioSaida;
-
+    private readonly RepositorioPacienteEmArquivo repositorioPaciente;
     private readonly RepositorioMedicamentoEmArquivo repositorioMedicamento;
 
     public RequisicaoSaidaController()
@@ -18,6 +20,7 @@ public sealed class RequisicaoSaidaController : Controller
 
         repositorioSaida = new RepositorioRequisicaoSaidaEmArquivo(contexto);
         repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
+        repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
     }
 
     [HttpGet]
@@ -35,6 +38,34 @@ public sealed class RequisicaoSaidaController : Controller
 
         return View(viewModels);
     }
+
+    [HttpGet]
+    public ActionResult Cadastrar()
+    {
+        ViewBag.Medicamentos = new SelectList(repositorioMedicamento.SelecionarTodos(), "Id", "Nome");
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult Cadastrar(CadastrarRequisicaoSaidaViewModel cadastrarVm)
+    {
+        Medicamento? medicamento = repositorioMedicamento.SelecionarPorId(cadastrarVm.MedicamentoId);
+
+        Paciente? paciente = repositorioPaciente.SelecionarPorId(cadastrarVm.PacienteId);
+
+        if (medicamento == null)
+            return NotFound();
+
+
+        RequisicaoSaida saida = new RequisicaoSaida(paciente!, medicamento, cadastrarVm.Quantidade);
+
+        repositorioSaida.Cadastrar(saida);
+
+        saida.MedicamentoRequisitado.RegistrarSaida(saida);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
 
 }
 
