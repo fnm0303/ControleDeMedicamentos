@@ -9,27 +9,10 @@ using ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-//Adiciona e injeta UMA instância por requisição/conexão
-//seria um modo (logo abaixo outro modo : DELEGATE)
-//builder.Services.AddScoped<ContextoJson>(ContextoJson.InjetarContexto);
+//Habilita o armazenamento em JSON
+builder.Services.AddInfraestruturaEmJson();
 
-//Expressão Lambda =>
-builder.Services.AddScoped(_ => //mesma coisa que colocar DELEGATE
-    {
-        ContextoJson contexto = new ContextoJson();
-
-        contexto.Carregar();
-
-        return contexto;
-    });
-
-builder.Services.AddScoped<RepositorioMedicamentoEmArquivo>();
-builder.Services.AddScoped<RepositorioFornecedorEmArquivo>();
-builder.Services.AddScoped<RepositorioFuncionarioEmArquivo>();
-builder.Services.AddScoped<RepositorioPacienteEmArquivo>();
-builder.Services.AddScoped<RepositorioRequisicaoEntradaEmArquivo>();
-builder.Services.AddScoped<RepositorioRequisicaoSaidaEmArquivo>();
-
+//Habilita o MVC (Model, View, Controller)
 builder.Services.AddControllersWithViews();
 
 // Constroi a instância do servidor...
