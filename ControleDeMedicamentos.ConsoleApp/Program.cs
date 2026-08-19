@@ -1,12 +1,5 @@
 ﻿// Instancia o construtor do servidor...
 // ...configura as dependências internas (controladores e serviços) e externas (repositórios)
-using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
-using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
-using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
-using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
-using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
-using ControleDeMedicamentos.ConsoleApp.ModuloRequisicoes;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 //Habilita o armazenamento em JSON

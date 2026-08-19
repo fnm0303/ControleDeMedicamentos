@@ -39,6 +39,9 @@ public sealed class FuncionarioController : Controller
     {
         Funcionario funcionario = new Funcionario(cadastrarVm.Nome, cadastrarVm.Telefone, cadastrarVm.CPF);
 
+        if (!ModelState.IsValid)
+            return View(cadastrarVm);
+
         repositorioFuncionario.Cadastrar(funcionario);
 
         return RedirectToAction(nameof(Listar));
@@ -61,6 +64,9 @@ public sealed class FuncionarioController : Controller
     public ActionResult Editar(EditarFuncionarioViewModel editarVm)
     {
         Funcionario funcionarioAtualizado = new Funcionario(editarVm.Nome, editarVm.Telefone, editarVm.CPF);
+
+        if (!ModelState.IsValid)
+            return View(editarVm);
 
         bool conseguiuEditar = repositorioFuncionario.Editar(editarVm.Id, funcionarioAtualizado);
 

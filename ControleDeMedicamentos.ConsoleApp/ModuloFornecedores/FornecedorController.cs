@@ -27,6 +27,10 @@ public sealed class FornecedorController : Controller
     public ActionResult Cadastrar(string nome, string telefone, string cnpj)
     {
         Fornecedor fornecedor = new Fornecedor(nome, telefone, cnpj);
+
+        if (!ModelState.IsValid)
+            return View(fornecedor);
+
         repositorioFornecedor.Cadastrar(fornecedor);
         return RedirectToAction(nameof(Listar));
     }

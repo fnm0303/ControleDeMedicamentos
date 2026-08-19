@@ -37,6 +37,9 @@ public sealed class PacienteController : Controller
     {
         Paciente paciente = new Paciente(cadastrarVm.Nome, cadastrarVm.Telefone, cadastrarVm.CartaoSus, cadastrarVm.CPF);
 
+        if (!ModelState.IsValid)
+            return View(cadastrarVm);
+
         repositorioPaciente.Cadastrar(paciente);
 
         return RedirectToAction(nameof(Listar));
