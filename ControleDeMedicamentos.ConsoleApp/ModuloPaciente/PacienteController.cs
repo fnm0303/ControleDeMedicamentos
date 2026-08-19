@@ -63,6 +63,9 @@ public sealed class PacienteController : Controller
     {
         Paciente pacienteAtualizado = new Paciente(editarVm.Nome, editarVm.Telefone, editarVm.CartaoSus, editarVm.CPF);
 
+        if (!ModelState.IsValid)
+            return View(editarVm);
+
         bool conseguiuEditar = repositorioPaciente.Editar(editarVm.Id, pacienteAtualizado);
 
         if (!conseguiuEditar)
